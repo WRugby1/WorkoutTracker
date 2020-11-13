@@ -6,6 +6,8 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./models/Workout");
 
+const PORT = (process.env.PORT || 3000)
+
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
     {
@@ -96,6 +98,6 @@ app.get("/stats", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/stats.html"))
 });
 
-app.listen(3000, () => {
-    console.log("App running on port 3000!");
+app.listen(PORT, () => {
+    console.log("App running on port:" + PORT);
 });
