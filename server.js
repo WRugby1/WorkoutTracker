@@ -52,7 +52,7 @@ app.put("/api/workouts/:id", (req, res) => {
 
 app.post("/api/workouts", ({ body }, res) => {
     db.create({
-        exercises: {
+        exercises: [{
             type: body.type,
             name: body.name,
             totalDuration: body.totalDuration,
@@ -60,7 +60,7 @@ app.post("/api/workouts", ({ body }, res) => {
             reps: body.reps,
             sets: body.sets,
             distance: body.distance
-        }
+        }]
     })
         .then(dbWorkout => {
             res.json(dbWorkout);
