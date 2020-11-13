@@ -4,7 +4,7 @@ const logger = require("morgan");
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
-const Workout = require("./models/workout.js");
+const db = require("./models");
 
 const PORT = process.env.PORT || 3000
 
