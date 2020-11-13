@@ -6,9 +6,15 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./models/Workout");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FitnessTracker", {
-    useNewUrlParser: true
-});
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -44,7 +50,7 @@ app.put("/api/workouts/:id", (req, res) => {
 
 app.post("/api/workouts", ({ body }, res) => {
     db.create({
-        exercise: {
+        exercises: {
             type: body.type,
             name: body.name,
             totalDuration: body.totalDuration,
