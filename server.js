@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("./models/Workout");
 
-const PORT = (process.env.PORT || 3000)
+const PORT = process.env.PORT || 3000
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
